@@ -80,3 +80,51 @@ iface eth0 inet static
 
 >No 2
 
+```
+echo 'zone "wise.c08.com" {
+        type master;
+        file "/etc/bind/wise/wise.c08.com";
+};' > /etc/bind/named.conf.local
+mkdir /etc/bind/wise
+echo "
+\$TTL    604800
+@       IN      SOA     wise.c08.com. root.wise.c08.com. (
+                                2       ; Serial
+                        604800          ; Refresh
+                        86400           ; Retry
+                        2419200         ; Expire
+                        604800 )        ; Negative Cache TTL
+;
+@               IN      NS      wise.c08.com.
+@               IN      A       192.183.3.2 ; IP Wise
+www             IN      CNAME   wise.c08.com.
+" > /etc/bind/wise/wise.c08.com
+service bind9 restart
+```
+
+>No3
+
+![image](https://user-images.githubusercontent.com/89815856/198834513-a69789f0-2c20-4adb-ba3b-677820969895.png)
+
+```
+echo "
+\$TTL    604800
+@       IN      SOA     wise.c08.com. root.wise.c08.com. (
+                                2       ; Serial
+                        604800          ; Refresh
+                        86400           ; Retry
+                        2419200         ; Expire
+                        604800 )        ; Negative Cache TTL
+;
+@               IN      NS      wise.c08.com.
+@               IN      A       192.183.3.2 ; IP Wise
+www             IN      CNAME   wise.c08.com.
+eden            IN      A       192.183.2.3 ; IP Eden
+www.eden        IN      CNAME   eden.wise.c08.com.
+" > /etc/bind/wise/wise.c08.com
+service bind9 restart
+```
+
+>No 4
+
+
