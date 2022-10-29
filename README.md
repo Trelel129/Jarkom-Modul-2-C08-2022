@@ -638,5 +638,5 @@ echo "
 service apache2 restart
 ```
 
-#Kendala
+# Kendala
 Nomor 4 ke bawah, tidak bisa reverse ptr, ping terkadang error
