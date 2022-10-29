@@ -637,3 +637,6 @@ echo "
 " > /etc/apache2/sites-available/eden.wise.c08.com.conf
 service apache2 restart
 ```
+
+#Kendala
+Nomor 4 ke bawah, tidak bisa reverse ptr, ping terkadang error
